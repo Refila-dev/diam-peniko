@@ -20,6 +20,7 @@
 # production
 /build
 
+
 # misc
 .DS_Store
 *.pem
@@ -35,6 +36,9 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+mykey
+mykey.pub
 
 # typescript
 *.tsbuildinfo
