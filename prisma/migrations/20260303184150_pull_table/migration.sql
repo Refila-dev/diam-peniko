@@ -1,4 +1,38 @@
 -- CreateTable
+CREATE TABLE "users" (
+    "user_id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "username" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "users_pkey" PRIMARY KEY ("user_id")
+);
+
+-- CreateTable
+CREATE TABLE "visitors" (
+    "visitor_id" SERIAL NOT NULL,
+    "token" TEXT NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "expires_at" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "visitors_pkey" PRIMARY KEY ("visitor_id")
+);
+
+-- CreateTable
+CREATE TABLE "post" (
+    "post_id" SERIAL NOT NULL,
+    "title" TEXT NOT NULL,
+    "content" TEXT NOT NULL,
+    "post_image" TEXT,
+    "user_id" INTEGER NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "post_pkey" PRIMARY KEY ("post_id")
+);
+
+-- CreateTable
 CREATE TABLE "reactions" (
     "reaction_id" SERIAL NOT NULL,
     "type" TEXT NOT NULL,
@@ -23,9 +57,17 @@ CREATE TABLE "comments" (
     CONSTRAINT "comments_pkey" PRIMARY KEY ("comment_id")
 );
 
-ALTER TABLE "comments" ADD CONSTRAINT "comments_content_check" CHECK ((user_id IS NOT NULL AND visitor_id IS NULL)
-    OR
-    (user_id IS NULL AND visitor_id IS NOT NULL));
+-- CreateIndex
+CREATE UNIQUE INDEX "users_username_key" ON "users"("username");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "visitors_token_key" ON "visitors"("token");
+
+-- CreateIndex
+CREATE INDEX "post_user_id_idx" ON "post"("user_id");
 
 -- CreateIndex
 CREATE INDEX "reactions_user_id_idx" ON "reactions"("user_id");
