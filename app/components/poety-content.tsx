@@ -1,7 +1,26 @@
-import React from 'react'
+'use client'
+import React, { useEffect } from 'react'
 import Image from 'next/image'
+import { useState } from 'react'
 
 const PoetyContent = () => {
+  const [poets, setPoets] = useState([]);
+
+  useEffect(() => {
+    const fetchPoets = async () => {
+      try {
+        const response = await fetch('/api/visitors');
+        const data = await response.json();
+        console.log('Fetched poets:', data);
+        setPoets(data);
+      } catch (error) {
+        console.error('Error fetching poets:', error);
+      }
+    };
+
+    fetchPoets();
+  }, []);
+
   return (
     <div className="w-full mx-auto min-h-screen flex flex-col gap-2">
       <div className="w-full mx-auto mt-10 min-h-screen max-w-4xl flex flex-col gap-5">
