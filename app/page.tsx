@@ -18,7 +18,7 @@ export default function Home() {
               <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
                 Tongasoa eto amin'ny tranokala Diam-peniko
               </h1>
-              <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+              <p className="max-w-md text-lg leading-8 text-yellow-950 font-bold dark:text-zinc-400 font-mono">
                 "Handrotsirotsy anao ny tanjona tsy hafeniko, izay no mampiavaka ilay tranokala Diam-peniko."
               </p>
               <p>
@@ -56,6 +56,7 @@ export default function Home() {
         <div className="flex justify-center items-center text-base font-medium mt-10">
           <a
             className="flex w-full gap-2 items-center h-12 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc]"
+            href="/fidirana/misoratra"
           >
             Hiditra ho mpikambana
           </a>
