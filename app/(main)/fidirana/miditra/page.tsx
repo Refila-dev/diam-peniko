@@ -1,9 +1,9 @@
 import React from 'react'
-import LoginPage from '@/app/components/ui/login-page'
+import LoginPage from '@/app/(main)/components/ui/login-page'
 
 const page = () => {
   return (
-    <div className='mt-20'>
+    <div>
       <LoginPage />
     </div>
   )
